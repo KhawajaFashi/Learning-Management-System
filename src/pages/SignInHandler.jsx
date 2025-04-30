@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { EyeOff } from 'lucide-react';
 import '../Login.css'
-import Overlay from '../components/overlay';
+import Overlay from '../components/Overlay';
 import axios from 'axios';
 
 const SignInHandler = (props) => {
