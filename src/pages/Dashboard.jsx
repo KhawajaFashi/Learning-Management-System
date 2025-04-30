@@ -23,7 +23,7 @@ const Dashboard = () => {
         console.log("Data: ", data);
 
         // Fetch courses
-        const coursesResponse = await axios.post("http://localhost:3000/getEnrolledCourses", data).then((response) => {
+        const coursesResponse = await axios.post("/api/getEnrolledCourses", data).then((response) => {
           let { enrolledCourses, activeCourses, courseCompleted } = response.data.data;
           setEnrolledCourses(enrolledCourses);
           setActiveCourses(activeCourses);
@@ -48,7 +48,7 @@ const Dashboard = () => {
     const data = { userName, title, instructorName, name };
     console.log("Data: ", data);
     if (completion) {
-      axios.post("http://localhost:3000/updateCourseCompletion", data).then((res) => {
+      axios.post("/api/updateCourseCompletion", data).then((res) => {
         console.log(res);
         setCourseCompleted(() => courseCompleted + 1);
         setCompletion(false);

@@ -15,7 +15,7 @@ const CourseBrowser = () => {
         setError(null);
 
         // Fetch courses
-        const coursesResponse = await axios.get("http://localhost:3000/getCourses");
+        const coursesResponse = await axios.get("/api/getCourses");
 
         setCourses(coursesResponse.data.data);
 

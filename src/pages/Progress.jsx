@@ -21,7 +21,7 @@ const Progress = () => {
                 const data = { userName };
 
                 // Fetch courses
-                const response = await axios.post("http://localhost:3000/getEnrolledCourses", data);
+                const response = await axios.post("/api/getEnrolledCourses", data);
                 const { enrolledCourses, activeCourses, courseCompleted } = response.data.data;
 
                 setEnrolledCourses(enrolledCourses);
@@ -30,7 +30,7 @@ const Progress = () => {
 
                 // Fetch details for each enrolled course
                 const courseDetailsPromises = enrolledCourses.map(course =>
-                    axios.post("http://localhost:3000/getCourseById", course)
+                    axios.post("/api/getCourseById", course)
                 );
 
                 const courseDetailsResponses = await Promise.all(courseDetailsPromises);
@@ -42,7 +42,7 @@ const Progress = () => {
                 setCourseDetails(courseDetailsData);
 
                 // Fetch certificates
-                const certificatesResponse = await axios.post("http://localhost:3000/getCertificates", data);
+                const certificatesResponse = await axios.post("/api/getCertificates", data);
                 const userCertificates = certificatesResponse.data.data.certificates || [];
                 setCertificates(userCertificates);
 

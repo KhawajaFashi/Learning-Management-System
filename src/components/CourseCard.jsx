@@ -9,7 +9,7 @@ const CourseCard = ({ course }) => {
       _id,
       userName
     }
-    const response = await axios.post("http://localhost:3000/enrollCourse", CourseEnroll).then((response) => {
+    const response = await axios.post("/api/enrollCourse", CourseEnroll).then((response) => {
       console.log(response);
     }).catch((err) => {
       console.log("Error Detected: ", err);

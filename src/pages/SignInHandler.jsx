@@ -40,7 +40,7 @@ const SignInHandler = (props) => {
     }
 
     const postData = async () => {
-        await axios.post(`http://localhost:3000/${urlPage}`, state).then((response) => {
+        await axios.post(`/api/${urlPage}`, state).then((response) => {
             if (response.status === 200) {
                 props.setLoggedIn(true);
                 console.log(state.email, " Name: ", state.name);
