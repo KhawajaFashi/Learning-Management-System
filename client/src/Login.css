@@ -1,0 +1,73 @@
+.Login_input input {
+    background: #f0efef;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    width: 22vw;
+}
+.Signup_input input {
+    background: #f0efef;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    width: 22vw;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+.animate_left {
+    animation: anime_l 1s 1 forwards ease-in-out;
+}
+
+@keyframes anime_l {
+    0% {
+        transform: translateX(-14rem);
+    }
+
+    100% {
+        transform: translateX(14.6rem);
+    }
+}
+
+.animate_right {
+    animation: anime_r 1s 1 forwards ease-in-out;
+}
+
+@keyframes anime_r {
+    0% {
+        transform: translateX(14.6rem);
+    }
+    
+    100% {
+        transform: translateX(-14rem);
+    }
+}
+
+.animate_form_left {
+    animation: anime_form_l 1s 1 forwards ease-in-out;
+}
+
+@keyframes anime_form_l {
+    0% {
+        transform: translateX(-10rem);
+    }
+
+    100% {
+        transform: translateX(10.6rem);
+    }
+}
+
+.animate_form_right {
+    animation: anime_form_r 1s 1 forwards ease-in-out;
+}
+
+@keyframes anime_form_r {
+    0% {
+        transform: translateX(10.6rem);
+    }
+    
+    100% {
+        transform: translateX(-10rem);
+    }
+}
