@@ -12,7 +12,7 @@ const LessonUploader = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [videoUrl, setVideoUrl] = useState("");
-
+  
   const handleFileChange = (e) => {
     setContent({ ...content, url: e.target.files[0] })
     console.log("In On Change: ", e.target.files[0]);
@@ -25,7 +25,7 @@ const LessonUploader = () => {
     setError(null);
     const userName = JSON.parse(localStorage.getItem('userName'));
     const name = JSON.parse(localStorage.getItem('name'));
-    console.log(userName, " Name: ", name);
+    console.log(userName," Name: ", name);
     const lessonData = {
       name,
       title,
@@ -48,7 +48,7 @@ const LessonUploader = () => {
       console.log("LessonData: ", lessonData);
       setVideoUrl(response.data.secure_url);
 
-      const res = await axios.post("/api/course", lessonData).then((response) => {
+      const res = await axios.post("http://localhost:3000/course", lessonData).then((response) => {
         console.log(response);
       })
 
@@ -67,7 +67,7 @@ const LessonUploader = () => {
     setTotalLesson('');
     setContent({ type: 'video', url: null });
   };
-
+  
   return (
     <div className="bg-white rounded-lg shadow-md p-6">
       {error && (

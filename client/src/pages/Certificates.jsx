@@ -19,7 +19,7 @@ const Certificates = () => {
                 console.log("Data: ", data);
 
                 // Fetch courses
-                await axios.post("/api/getCertificates", data).then((response) => {
+                await axios.post("http://localhost:3000/getCertificates", data).then((response) => {
                     let { certificates } = response.data.data;
                     setCertificates(certificates);
                     console.log("Response: ", response);
