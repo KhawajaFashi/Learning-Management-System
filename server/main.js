@@ -2,8 +2,8 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import User from '../server/models/User.js';
-import Course from '../server/models/Course.js';
+import User from './models/User.js';
+import Course from './models/Course.js';
 
 dotenv.config();
 const app = express();
