@@ -21,13 +21,13 @@ const Feedback = () => {
                 const data = { userName };
 
                 // Fetch enrolled courses
-                const response = await axios.post("http://localhost:3000/getEnrolledCourses", data);
+                const response = await axios.post(`${import.meta.env.Railway_URL}/getEnrolledCourses`, data);
                 const { enrolledCourses } = response.data.data;
                 setEnrolledCourses(enrolledCourses);
 
                 // Fetch details for each enrolled course
                 const courseDetailsPromises = enrolledCourses.map(course =>
-                    axios.post("http://localhost:3000/getCourseById", course)
+                    axios.post(`${import.meta.env.Railway_URL} / getCourseById`, course)
                 );
 
                 const courseDetailsResponses = await Promise.all(courseDetailsPromises);
@@ -40,7 +40,7 @@ const Feedback = () => {
                 setCourseDetails(courseDetailsData);
 
                 // Fetch user feedback
-                const feedbackResponse = await axios.post("http://localhost:3000/getUserFeedback", data);
+                const feedbackResponse = await axios.post(`${import.meta.env.Railway_URL}/getUserFeedback`, data);
                 if (feedbackResponse.data.data && feedbackResponse.data.data.feedback) {
                     setUserFeedback(feedbackResponse.data.data.feedback);
                 }
@@ -79,7 +79,7 @@ const Feedback = () => {
                 }
             };
 
-            await axios.post("http://localhost:3000/addFeedback", data);
+            await axios.post(`${import.meta.env.Railway_URL}/addFeedback`, data);
 
             setFeedbackText('');
             setSelectedCourse('');

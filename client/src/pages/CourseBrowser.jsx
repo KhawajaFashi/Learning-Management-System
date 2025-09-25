@@ -15,7 +15,7 @@ const CourseBrowser = () => {
         setError(null);
 
         // Fetch courses
-        const coursesResponse = await axios.get("http://localhost:3000/getCourses");
+        const coursesResponse = await axios.get(`${import.meta.env.Railway_URL}/getCourses`);
 
         setCourses(coursesResponse.data.data);
 

@@ -11,7 +11,7 @@ const EnrolledCourseCard = (props) => {
   const [completedLessons, setCompletedLessons] = useState(lessonCompleted);
 
   useEffect(() => {
-    const response = axios.post("http://localhost:3000/getCourseById", props.course).then((res) => {
+    const response = axios.post(`${import.meta.env.Railway_URL}/getCourseById`, props.course).then((res) => {
       console.log(res);
       const { instructorName, courseName, description, totalLesson, videoUrl } = res.data.data;
       props.setTitle(courseName);
@@ -34,7 +34,7 @@ const EnrolledCourseCard = (props) => {
     if (completedLessons + 1 === totalLessons) {
       props.setCompletion(true);
       console.log("Inside if");
-      axios.post("http://localhost:3000/updateCourseProgress", data).then((res) => {
+      axios.post(`${import.meta.env.Railway_URL}/updateCourseProgress`, data).then((res) => {
         console.log("Inside posting data");
         console.log(res);
         setCompletedLessons(() => completedLessons + 1);
@@ -43,7 +43,7 @@ const EnrolledCourseCard = (props) => {
     }
     else if (completedLessons === totalLessons)
       return;
-    axios.post("http://localhost:3000/updateCourseProgress", data).then((res) => {
+    axios.post(`${import.meta.env.Railway_URL}/updateCourseProgress`, data).then((res) => {
       console.log(res);
       setCompletedLessons(() => completedLessons + 1);
     })
