@@ -12,8 +12,10 @@ const port = process.env.PORT || 5000;
 
 // ✅ Fix: Call cors()
 app.use(cors());
-app.use(cors({ origin: "https://yourfrontend.netlify.app" }));
+app.use(cors({ origin: "https://edvoralms.netlify.app" }));
+app.use(cors({ origin: "https://learning-management-system-production-1636.up.railway.app" }));
 app.use(express.json()); // Allows handling JSON requests
+
 
 // ✅ Fix: Use an async function for MongoDB connection
 const connectDB = async () => {

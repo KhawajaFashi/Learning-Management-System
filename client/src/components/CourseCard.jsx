@@ -8,7 +8,7 @@ const CourseCard = ({ course }) => {
       _id,
       userName
     }
-    const response = await axios.post(`${import.meta.env.Railway_URL}/enrollCourse`, CourseEnroll).then((response) => {
+    const response = await axios.post(`${import.meta.env.VITE_API_URL}/enrollCourse`, CourseEnroll).then((response) => {
       console.log(response);
     }).catch((err) => {
       console.log("Error Detected: ", err);

@@ -21,7 +21,7 @@ const Progress = () => {
                 const data = { userName };
 
                 // Fetch courses
-                const response = await axios.post(`${import.meta.env.Railway_URL}/getEnrolledCourses`, data);
+                const response = await axios.post(`${import.meta.env.VITE_API_URL}/getEnrolledCourses`, data);
                 const { enrolledCourses, activeCourses, courseCompleted } = response.data.data;
 
                 setEnrolledCourses(enrolledCourses);
@@ -30,7 +30,7 @@ const Progress = () => {
 
                 // Fetch details for each enrolled course
                 const courseDetailsPromises = enrolledCourses.map(course =>
-                    axios.post(`${import.meta.env.Railway_URL}/getCourseById`, course)
+                    axios.post(`${import.meta.env.VITE_API_URL}/getCourseById`, course)
                 );
 
                 const courseDetailsResponses = await Promise.all(courseDetailsPromises);
@@ -42,7 +42,7 @@ const Progress = () => {
                 setCourseDetails(courseDetailsData);
 
                 // Fetch certificates
-                const certificatesResponse = await axios.post(`${import.meta.env.Railway_URL}/getCertificates`, data);
+                const certificatesResponse = await axios.post(`${import.meta.env.VITE_API_URL}/getCertificates`, data);
                 const userCertificates = certificatesResponse.data.data.certificates || [];
                 setCertificates(userCertificates);
 
@@ -138,7 +138,7 @@ const Progress = () => {
                         <div className="w-full bg-gray-200 rounded-full h-5 mr-4">
                             <div
                                 className="bg-indigo-600 h-5 rounded-full transition-all duration-300"
-                                style={{ width: `${ calculateOverallProgress() } % ` }}
+                                style={{ width: `${calculateOverallProgress()} % ` }}
                             />
                         </div>
                         <span className="text-lg font-bold text-indigo-600">
@@ -184,7 +184,7 @@ const Progress = () => {
                                         <div
                                             className="w-full mx-1 bg-indigo-600"
                                             style={{
-                                                height: `${ item.count * 40 }px`,
+                                                height: `${item.count * 40}px`,
                                                 borderRadius: '3px'
                                             }}
                                         ></div>
@@ -249,11 +249,10 @@ const Progress = () => {
                                         {course.lessonCompleted} / {course.totalLesson}
                                     </td>
                                     <td className="px-6 py-4 whitespace-nowrap">
-                                        <span className={`px - 2 inline - flex text - xs leading - 5 font - semibold rounded - full ${
-                course.lessonCompleted === course.totalLesson
-                ? 'bg-green-100 text-green-800'
-                : 'bg-yellow-100 text-yellow-800'
-            } `}>
+                                        <span className={`px - 2 inline - flex text - xs leading - 5 font - semibold rounded - full ${course.lessonCompleted === course.totalLesson
+                                                ? 'bg-green-100 text-green-800'
+                                                : 'bg-yellow-100 text-yellow-800'
+                                            } `}>
                                             {course.lessonCompleted === course.totalLesson ? 'Completed' : 'In Progress'}
                                         </span>
                                     </td>
@@ -294,7 +293,7 @@ const Progress = () => {
                             <div className="w-full bg-gray-200 rounded-full h-2.5 mt-2">
                                 <div
                                     className="bg-indigo-600 h-2.5 rounded-full"
-                                    style={{ width: `${ (courseCompleted / (activeCourses)) * 100 }% ` }}
+                                    style={{ width: `${(courseCompleted / (activeCourses)) * 100}% ` }}
                                 ></div>
                             </div>
                             <p className="text-gray-600 mt-1">

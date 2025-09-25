@@ -15,7 +15,7 @@ const CourseBrowser = () => {
         setError(null);
 
         // Fetch courses
-        const coursesResponse = await axios.get(`${import.meta.env.Railway_URL}/getCourses`);
+        const coursesResponse = await axios.get(`${import.meta.env.VITE_API_URL}/getCourses`);
 
         setCourses(coursesResponse.data.data);
 

@@ -48,7 +48,7 @@ const LessonUploader = () => {
       console.log("LessonData: ", lessonData);
       setVideoUrl(response.data.secure_url);
 
-      const res = await axios.post(`${import.meta.env.Railway_URL}/course`, lessonData).then((response) => {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/course`, lessonData).then((response) => {
         console.log(response);
       })
 
@@ -159,9 +159,8 @@ const LessonUploader = () => {
           <button
             type="submit"
             disabled={loading}
-            className={`px - 6 py - 2 rounded - lg text - white ${
-        loading? 'bg-blue-400 cursor-not-allowed': 'bg-blue-500 hover:bg-blue-600'
-      }`}
+            className={`px - 6 py - 2 rounded - lg text - white ${loading ? 'bg-blue-400 cursor-not-allowed' : 'bg-blue-500 hover:bg-blue-600'
+              }`}
           >
             {/* {loading ? 'Saving...' : existingLesson ? 'Update Lesson' : 'Create Lesson'} */}
             {loading ? "Uploading..." : "Upload Course"}

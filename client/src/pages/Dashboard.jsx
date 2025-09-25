@@ -23,7 +23,7 @@ const Dashboard = () => {
         console.log("Data: ", data);
 
         // Fetch courses
-        const coursesResponse = await axios.post(`${import.meta.env.Railway_URL}/getEnrolledCourses`, data).then((response) => {
+        const coursesResponse = await axios.post(`${import.meta.env.VITE_API_URL}/getEnrolledCourses`, data).then((response) => {
           let { enrolledCourses, activeCourses, courseCompleted } = response.data.data;
           setEnrolledCourses(enrolledCourses);
           setActiveCourses(activeCourses);
@@ -48,7 +48,7 @@ const Dashboard = () => {
     const data = { userName, title, instructorName, name };
     console.log("Data: ", data);
     if (completion) {
-      axios.post(`${import.meta.env.Railway_URL}/updateCourseCompletion`, data).then((res) => {
+      axios.post(`${import.meta.env.VITE_API_URL}/updateCourseCompletion`, data).then((res) => {
         console.log(res);
         setCourseCompleted(() => courseCompleted + 1);
         setCompletion(false);
