@@ -11,9 +11,26 @@ const port = process.env.PORT || 5000;
 
 
 // ✅ Fix: Call cors()
-app.use(cors());
-app.use(cors({ origin: "https://edvoralms.netlify.app" }));
-app.use(cors({ origin: "https://learning-management-system-production-1636.up.railway.app" }));
+const allowedOrigins = [
+    "http://localhost:5173", // dev
+    "https://edvoralms.netlify.app", // frontend prod
+    "https://learning-management-system-production-1636.up.railway.app" // backend prod
+];
+
+app.use(
+    cors({
+        origin: function (origin, callback) {
+            if (!origin || allowedOrigins.includes(origin)) {
+                callback(null, true);
+            } else {
+                callback(new Error("CORS not allowed for this origin: " + origin));
+            }
+        },
+        methods: ["GET", "POST", "PUT", "DELETE"],
+        credentials: true,
+    })
+);
+
 app.use(express.json()); // Allows handling JSON requests
 
 

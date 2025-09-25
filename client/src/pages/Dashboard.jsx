@@ -56,7 +56,6 @@ const Dashboard = () => {
     }
   }, [completion]);
 
-  console.log("Enrolled Courses: ", enrolledCourses, '\n', ActiveCourses, '\n', courseCompleted);
 
   return (
     <div className="p-6 max-w-[98vw] ml-16">
