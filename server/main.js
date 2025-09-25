@@ -1,11 +1,13 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 import cors from 'cors';
 import User from '../server/models/User.js';
 import Course from '../server/models/Course.js';
 
+dotenv.config();
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 5000;
 
 
 // ✅ Fix: Call cors()
@@ -15,7 +17,7 @@ app.use(express.json()); // Allows handling JSON requests
 // ✅ Fix: Use an async function for MongoDB connection
 const connectDB = async () => {
     try {
-        await mongoose.connect("mongodb://localhost:27017/User");
+        await mongoose.connect(process.env.MONGO_URI);
         console.log("MongoDB Connected!");
     } catch (error) {
         console.error("Error connecting to MongoDB:", error);

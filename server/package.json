@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon main.js",
-    "build": "echo \"Error: no build step defined\" && exit 1"
+    "start": "node main.js"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +13,7 @@
   "description": "",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^17.2.2",
     "express": "^4.21.2",
     "mongoose": "^8.12.1",
     "nodemon": "^3.1.10"
